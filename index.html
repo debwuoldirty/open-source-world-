@@ -6,7 +6,7 @@
     <title>Open Source World – Server</title>
     <style>
         /* ============================================================
-           OPEN SOURCE WORLD – LANDING PAGE
+           OPEN SOURCE WORLD – LANDING PAGE (based on help.pwn)
            ============================================================ */
         * {
             margin: 0;
@@ -64,11 +64,43 @@
             margin-top: 12px;
         }
 
-        .banner {
-            width: 100%;
+        .banner-placeholder {
+            background: #1a1a2a;
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            border: 1px dashed #444;
             border-radius: 12px;
             margin-top: 20px;
-            border: 1px solid #2a2a3a;
+            font-size: 1.2rem;
+        }
+
+        /* SECURITY ALERT */
+        .security-alert {
+            background: #1a0a0a;
+            border: 2px solid #ff3333;
+            border-radius: 12px;
+            padding: 18px 25px;
+            margin: 20px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            color: #ff6666;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+        }
+
+        .security-alert .lock {
+            font-size: 1.8rem;
+        }
+        .security-alert .terminal {
+            font-size: 1.8rem;
+        }
+        .security-alert .text {
+            letter-spacing: 1px;
         }
 
         /* SECTIONS */
@@ -142,6 +174,7 @@
             color: #00aaff;
             text-decoration: none;
             transition: 0.2s;
+            cursor: default;
         }
 
         .web-item:hover {
@@ -173,40 +206,27 @@
 
         /* SCREENSHOTS GALLERY */
         .screenshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
+            justify-content: center;
             margin-top: 20px;
         }
 
-        .screenshot-grid .card-img {
-            background: #15151f;
+        .screenshot-grid img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
-            overflow: hidden;
             border: 1px solid #2a2a3a;
+            background: #1a1a2a;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .screenshot-grid .card-img:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.15);
+        .screenshot-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.2);
             border-color: #00ff88;
-        }
-
-        .screenshot-grid .card-img img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .screenshot-grid .card-img .caption {
-            padding: 10px 12px;
-            color: #b0b0b8;
-            font-size: 0.9rem;
-            text-align: center;
-            background: #0d0d14;
-            border-top: 1px solid #1f1f2e;
         }
 
         /* FOOTER */
@@ -242,6 +262,7 @@
             header h1 { font-size: 2.2rem; }
             .grid-2col { grid-template-columns: 1fr; }
             .grid-3col { grid-template-columns: 1fr; }
+            .screenshot-grid img { width: 100%; height: auto; }
         }
     </style>
 </head>
@@ -253,10 +274,17 @@
     <header>
         <h1>🌍 Open Source World</h1>
         <p class="subtitle">A fully‑featured multiplayer world with banks, crypto, weed, jobs, houses, vehicles & more.</p>
-        <span class="status-badge">🟢 Server Online</span>
-        <!-- Banner personalizado (sube tu imagen como banner.png a la carpeta images) -->
-        <img src="images/banner.png" alt="Open Source World Banner" class="banner">
+        <span class="status-badge">🟢 Under Construction</span>
+        <!-- CAMBIA ESTO: Reemplaza el div de abajo por tu imagen real -->
+        <div class="banner-placeholder">🎮 [ Your Server Banner Image Here ]</div>
     </header>
+
+    <!-- ===== SECURITY ALERT ===== -->
+    <div class="security-alert">
+        <span class="lock">🔒</span>
+        <span class="text">SERVER HOSTED BEHIND OS PENTOO</span>
+        <span class="terminal">💻</span>
+    </div>
 
     <!-- ===== FEATURES OVERVIEW ===== -->
     <section>
@@ -298,93 +326,35 @@
                 <h4>📦 Inventory & Menu</h4>
                 <p>Press <strong>N</strong> to open the main menu. Access your inventory, GPS, settings, and more. Everything you collect (seeds, weed, SWC, hostages, medic kits) stays in your inventory.</p>
             </div>
+            <!-- NUEVA TARJETA: Admin/Owner Full Request -->
+            <div class="card">
+                <h4>👑 Admin/Owner – Full Request</h4>
+                <p>If you find a cool spot in Los Santos and want a house or a door there, contact <strong>debwuoldirty</strong>. The owner can map a custom house for you on that location. House price is based on the interior complexity.</p>
+            </div>
         </div>
     </section>
 
-    <!-- ===== SCREENSHOTS GALLERY (16 IMÁGENES) ===== -->
+    <!-- ===== SCREENSHOTS GALLERY ===== -->
     <section>
         <h2>📸 Screenshots</h2>
         <div class="screenshot-grid">
-            <!-- 1. Weed -->
-            <div class="card-img">
-                <img src="images/weed.png" alt="Weed Farm">
-                <div class="caption">🌿 Weed System – Plant, grow & harvest</div>
-            </div>
-            <!-- 2. Bank -->
-            <div class="card-img">
-                <img src="images/bank.png" alt="Bank Interior">
-                <div class="caption">🏦 Bank – ATMs, transfers & history</div>
-            </div>
-            <!-- 3. Skin Shop -->
-            <div class="card-img">
-                <img src="images/skinshop.png" alt="Skin Shop">
-                <div class="caption">👕 Skin Shop – Change your look</div>
-            </div>
-            <!-- 4. Vehicle Shop -->
-            <div class="card-img">
-                <img src="images/vehicleshop.png" alt="Vehicle Shop">
-                <div class="caption">🚗 Vehicle Shop – Buy any car (2.5M)</div>
-            </div>
-            <!-- 5. Modshop -->
-            <div class="card-img">
-                <img src="images/modshop.png" alt="Vehicle Modshop">
-                <div class="caption">🔧 Modshop – Customize your ride</div>
-            </div>
-            <!-- 6. Deathmatch -->
-            <div class="card-img">
-                <img src="images/deathmatch.png" alt="Deathmatch Arena">
-                <div class="caption">⚔️ Deathmatch – PvP arena</div>
-            </div>
-            <!-- 7. Crypto Lab -->
-            <div class="card-img">
-                <img src="images/crypto.png" alt="Crypto Lab">
-                <div class="caption">₿ Crypto Lab – Mine SWC coins</div>
-            </div>
-            <!-- 8. Houses (interior) -->
-            <div class="card-img">
-                <img src="images/house.png" alt="House Interior">
-                <div class="caption">🏡 Houses – Custom interiors (400+ objects)</div>
-            </div>
-            <!-- 9. Hospital -->
-            <div class="card-img">
-                <img src="images/hospital.png" alt="Hospital">
-                <div class="caption">🏥 Hospital – Refill HP & buy Medic Kits</div>
-            </div>
-            <!-- 10. Gas Vendor -->
-            <div class="card-img">
-                <img src="images/gas.png" alt="Gas Vendor">
-                <div class="caption">⛽ Gas Vendor – Gas delivery job</div>
-            </div>
-            <!-- 11. Taxi -->
-            <div class="card-img">
-                <img src="images/taxi.png" alt="Taxi Job">
-                <div class="caption">🚕 Taxi – Passenger transport job</div>
-            </div>
-            <!-- 12. Lumber Jack -->
-            <div class="card-img">
-                <img src="images/lumberjack.png" alt="Lumber Jack">
-                <div class="caption">🪓 Lumber Jack – Wood cutting job</div>
-            </div>
-            <!-- 13. GPS / Map -->
-            <div class="card-img">
-                <img src="images/gps.png" alt="GPS / Map">
-                <div class="caption">🗺️ GPS – Navigate the world</div>
-            </div>
-            <!-- 14. Container Houses (exterior, beach) -->
-            <div class="card-img">
-                <img src="images/container.png" alt="Container Houses">
-                <div class="caption">📦 Container Houses – Beachfront living</div>
-            </div>
-            <!-- 15. Hostages -->
-            <div class="card-img">
-                <img src="images/hostages.png" alt="Hostages">
-                <div class="caption">🔒 Hostages – Buy & exchange at Cartel</div>
-            </div>
-            <!-- 16. PC Web Pages -->
-            <div class="card-img">
-                <img src="images/pcweb.png" alt="PC Web Pages">
-                <div class="caption">💻 PC Web Pages – Bank, Ammu, Weed, Crypto & more</div>
-            </div>
+            <img src="images/bank.png" alt="Bank Interior">
+            <img src="images/crypto.png" alt="Crypto Lab">
+            <img src="images/weed.png" alt="Weed Farm">
+            <img src="images/skinshop.png" alt="Skin Shop">
+            <img src="images/vehicleshop.png" alt="Vehicle Shop">
+            <img src="images/modshop.png" alt="Modshop">
+            <img src="images/deathmatch.png" alt="Deathmatch">
+            <img src="images/houses.png" alt="Houses (beach)">
+            <img src="images/hospital.png" alt="Hospital">
+            <img src="images/gasvendor.png" alt="Gas Vendor">
+            <img src="images/taxi.png" alt="Taxi Job">
+            <img src="images/lumberjack.png" alt="Lumberjack">
+            <img src="images/gps.png" alt="GPS Menu">
+            <img src="images/containers.png" alt="Containers">
+            <img src="images/hostages.png" alt="Hostages">
+            <img src="images/pcweb.png" alt="PC & Web Pages">
+            <img src="images/npcs.png" alt="NPCs">
         </div>
         <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px;">
             <em>In‑game screenshots of Open Source World features.</em>
@@ -396,12 +366,12 @@
         <h2>🌐 In‑Game Web Pages</h2>
         <p>Access these websites via the PC in your house. They offer various services:</p>
         <div class="web-list">
-            <a href="#" class="web-item">www.sourceworldbank.com</a>
-            <a href="#" class="web-item">www.ammunation.com</a>
-            <a href="#" class="web-item">www.weed.com</a>
-            <a href="#" class="web-item">www.crypto.com</a>
-            <a href="#" class="web-item">www.changecolor.com</a>
-            <a href="#" class="web-item">www.thedeepsource.com</a>
+            <a href="javascript:void(0)" class="web-item">www.sourceworldbank.com</a>
+            <a href="javascript:void(0)" class="web-item">www.ammunation.com</a>
+            <a href="javascript:void(0)" class="web-item">www.weed.com</a>
+            <a href="javascript:void(0)" class="web-item">www.crypto.com</a>
+            <a href="javascript:void(0)" class="web-item">www.changecolor.com</a>
+            <a href="javascript:void(0)" class="web-item">www.thedeepsource.com</a>
         </div>
         <ul style="margin-top:15px; color:#b0b0b8; list-style:square; padding-left:20px;">
             <li><strong>sourceworldbank</strong> – Check balance, transaction history.</li>
@@ -440,6 +410,7 @@
     <section>
         <h2>📅 Latest Updates</h2>
         <ul class="update-list">
+            <li><span class="date">2026-08-04</span> – Owner successfully added persistent NPCs across the server – more coming daily!</li>
             <li><span class="date">2026-08-03</span> – Fixed hospital spawn height, added new animations (<code>/sitchair</code>, <code>/sofasit</code>, <code>/sleep</code>, etc.).</li>
             <li><span class="date">2026-08-02</span> – Added persistent mining progress, terminal UI for crypto lab.</li>
             <li><span class="date">2026-08-01</span> – Introduced hunger/thirst system with restaurant and vending machines.</li>
