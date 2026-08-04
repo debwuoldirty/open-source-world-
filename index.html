@@ -32,7 +32,6 @@
             border: 1px solid #1f1f2e;
         }
 
-        /* HEADER */
         header {
             text-align: center;
             border-bottom: 2px solid #00ff88;
@@ -75,7 +74,6 @@
             font-size: 1.2rem;
         }
 
-        /* SECTIONS */
         section {
             margin: 40px 0;
         }
@@ -175,18 +173,17 @@
             margin-right: 12px;
         }
 
-        /* SCREENSHOTS GALLERY */
+        /* SCREENSHOTS GALLERY – 4 columnas responsive */
         .screenshot-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
             gap: 20px;
-            justify-content: center;
             margin-top: 20px;
         }
 
         .screenshot-grid img {
-            width: 300px;
-            height: 200px;
+            width: 100%;
+            height: 180px;
             object-fit: cover;
             border-radius: 10px;
             border: 1px solid #2a2a3a;
@@ -201,8 +198,8 @@
         }
 
         .screenshot-placeholder {
-            width: 300px;
-            height: 200px;
+            width: 100%;
+            height: 180px;
             background: #1a1a2a;
             border-radius: 10px;
             border: 1px dashed #444;
@@ -213,7 +210,6 @@
             font-size: 0.9rem;
         }
 
-        /* FOOTER */
         footer {
             margin-top: 40px;
             padding-top: 25px;
@@ -240,13 +236,13 @@
             font-size: 0.8rem;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 700px) {
             .container { padding: 20px; }
             header h1 { font-size: 2.2rem; }
             .grid-2col { grid-template-columns: 1fr; }
             .grid-3col { grid-template-columns: 1fr; }
-            .screenshot-grid img { width: 100%; height: auto; }
+            .screenshot-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .screenshot-grid img { height: 130px; }
         }
     </style>
 </head>
@@ -258,9 +254,9 @@
     <header>
         <h1>🌍 Open Source World</h1>
         <p class="subtitle">A fully‑featured multiplayer world with banks, crypto, weed, jobs, houses, vehicles & more.</p>
-        <span class="status-badge">🟢 Server Under Construction</span>
+        <span class="status-badge">🟢 Server Online</span>
         <!-- CAMBIA ESTO: Reemplaza el div de abajo por tu imagen real -->
-        <img src="images/banner.png" alt="Open Source World Banner" style="width:100%; border-radius:12px; margin-top:20px;">
+        <div class="banner-placeholder">🎮 [ Your Server Banner Image Here ]</div>
     </header>
 
     <!-- ===== FEATURES OVERVIEW ===== -->
@@ -306,27 +302,27 @@
         </div>
     </section>
 
-    <!-- ===== SCREENSHOTS GALLERY ===== -->
+    <!-- ===== SCREENSHOTS GALLERY – 16 IMÁGENES ===== -->
     <section>
         <h2>📸 Screenshots</h2>
         <div class="screenshot-grid">
-            <!-- ============================================================
-                 INSTRUCCIONES PARA LAS IMÁGENES:
-                 1. Sube tus capturas de pantalla a la carpeta "images/"
-                    dentro de este repositorio.
-                 2. Reemplaza los nombres de los archivos (ej: "bank.jpg")
-                    con los nombres reales de tus imágenes.
-                 3. Si no tienes alguna imagen, elimina esa línea <img>.
-                 ============================================================ -->
-            <img src="images/bank.jpg" alt="Bank Interior">
-            <img src="images/crypto.jpg" alt="Crypto Lab">
+            <!-- Sube tus imágenes a la carpeta "images/" con estos nombres exactos -->
             <img src="images/weed.jpg" alt="Weed Farm">
+            <img src="images/bank.jpg" alt="Bank Interior">
+            <img src="images/skinshop.jpg" alt="Skin Shop">
+            <img src="images/vehicleshop.jpg" alt="Vehicle Shop">
+            <img src="images/modshop.jpg" alt="Mod Shop">
+            <img src="images/deathmatch.jpg" alt="Deathmatch Arena">
+            <img src="images/crypto.jpg" alt="Crypto Lab">
             <img src="images/house.jpg" alt="House Interior">
-            <img src="images/vehicles.jpg" alt="Vehicle Shop">
-            <img src="images/parkour.jpg" alt="Parkour">
-            <!-- Si te faltan imágenes, puedes usar placeholders como este:
-            <div class="screenshot-placeholder">🏦 Coming Soon</div>
-            -->
+            <img src="images/hospital.jpg" alt="Hospital">
+            <img src="images/gas.jpg" alt="Gas Vendor">
+            <img src="images/taxi.jpg" alt="Taxi Job">
+            <img src="images/lumberjack.jpg" alt="Lumber Jack">
+            <img src="images/gps.jpg" alt="GPS Menu">
+            <img src="images/container.jpg" alt="Container Houses">
+            <img src="images/hostages.jpg" alt="Hostages / Cartel">
+            <img src="images/pcweb.jpg" alt="PC Web Pages">
         </div>
         <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px;">
             <em>In‑game screenshots of Open Source World features.</em>
@@ -393,7 +389,7 @@
     <footer>
         <p>Made with ❤️ for the Open Source World community.</p>
         <p>
-            <a href="https://github.com/opensourceworldserver/open-source-world-server" target="_blank">📂 GitHub Repository</a>•
+            <a href="https://github.com/opensourceworldserver/open-source-world-server" target="_blank">📂 GitHub Repository</a> •
             <span>⚡ Powered by debwuoldirty</span>
         </p>
         <p class="legal"><small>Server owner: debwuoldirty • This project is read‑only. No contributions accepted.</small></p>
