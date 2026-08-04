@@ -131,30 +131,6 @@
             font-size: 0.95rem;
         }
 
-        .command-list {
-            background: #0d0d14;
-            padding: 20px;
-            border-radius: 10px;
-            list-style: none;
-        }
-
-        .command-list li {
-            padding: 6px 0;
-            border-bottom: 1px solid #1a1a2a;
-            font-family: 'Courier New', monospace;
-            color: #00ff88;
-        }
-
-        .command-list li:last-child {
-            border-bottom: none;
-        }
-
-        .command-list .desc {
-            color: #aaa;
-            font-family: 'Segoe UI', sans-serif;
-            font-weight: normal;
-        }
-
         .web-list {
             display: flex;
             flex-wrap: wrap;
@@ -199,6 +175,44 @@
             margin-right: 12px;
         }
 
+        /* SCREENSHOTS GALLERY */
+        .screenshot-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .screenshot-grid img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #2a2a3a;
+            background: #1a1a2a;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .screenshot-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+
+        .screenshot-placeholder {
+            width: 300px;
+            height: 200px;
+            background: #1a1a2a;
+            border-radius: 10px;
+            border: 1px dashed #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
         /* FOOTER */
         footer {
             margin-top: 40px;
@@ -232,6 +246,7 @@
             header h1 { font-size: 2.2rem; }
             .grid-2col { grid-template-columns: 1fr; }
             .grid-3col { grid-template-columns: 1fr; }
+            .screenshot-grid img { width: 100%; height: auto; }
         }
     </style>
 </head>
@@ -243,7 +258,8 @@
     <header>
         <h1>🌍 Open Source World</h1>
         <p class="subtitle">A fully‑featured multiplayer world with banks, crypto, weed, jobs, houses, vehicles & more.</p>
-        <span class="status-badge">🟢 Server Online</span>
+        <span class="status-badge">🟢 Server Under Construction</span>
+        <!-- CAMBIA ESTO: Reemplaza el div de abajo por tu imagen real -->
         <div class="banner-placeholder">🎮 [ Your Server Banner Image Here ]</div>
     </header>
 
@@ -290,34 +306,31 @@
         </div>
     </section>
 
-    <!-- ===== COMMANDS ===== -->
+    <!-- ===== SCREENSHOTS GALLERY ===== -->
     <section>
-        <h2>⌨️ Useful Commands</h2>
-        <div class="grid-2col">
-            <div>
-                <h3>General</h3>
-                <ul class="command-list">
-                    <li><span class="desc"><code>/help</code> – Open this help system (5 pages)</span></li>
-                    <li><span class="desc"><code>/inv</code> – Show your inventory</span></li>
-                    <li><span class="desc"><code>/stats</code> – View your stats</span></li>
-                    <li><span class="desc"><code>/myinfo</code> – Quick bank & skin info</span></li>
-                    <li><span class="desc"><code>/farm</code> – Plant a weed seed (outdoors only)</span></li>
-                    <li><span class="desc"><code>/up</code> – Emergency unstuck (if you get trapped)</span></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Vehicles & Houses</h3>
-                <ul class="command-list">
-                    <li><span class="desc"><code>/park</code> – Save your vehicle at current position</span></li>
-                    <li><span class="desc"><code>/lock</code> – Lock your vehicle</span></li>
-                    <li><span class="desc"><code>/unlock</code> – Unlock your vehicle</span></li>
-                    <li><span class="desc"><code>/lights</code> – Toggle vehicle lights</span></li>
-                    <li><span class="desc"><code>/respawn [slot]</code> – Respawn a vehicle (slots 1‑4)</span></li>
-                    <li><span class="desc"><code>/buyhouse</code> – Buy the nearest green‑marked house</span></li>
-                    <li><span class="desc"><code>/sellhouse</code> – Sell the nearest house (get 50% refund)</span></li>
-                </ul>
-            </div>
+        <h2>📸 Screenshots</h2>
+        <div class="screenshot-grid">
+            <!-- ============================================================
+                 INSTRUCCIONES PARA LAS IMÁGENES:
+                 1. Sube tus capturas de pantalla a la carpeta "images/"
+                    dentro de este repositorio.
+                 2. Reemplaza los nombres de los archivos (ej: "bank.jpg")
+                    con los nombres reales de tus imágenes.
+                 3. Si no tienes alguna imagen, elimina esa línea <img>.
+                 ============================================================ -->
+            <img src="images/bank.jpg" alt="Bank Interior">
+            <img src="images/crypto.jpg" alt="Crypto Lab">
+            <img src="images/weed.jpg" alt="Weed Farm">
+            <img src="images/house.jpg" alt="House Interior">
+            <img src="images/vehicles.jpg" alt="Vehicle Shop">
+            <img src="images/parkour.jpg" alt="Parkour">
+            <!-- Si te faltan imágenes, puedes usar placeholders como este:
+            <div class="screenshot-placeholder">🏦 Coming Soon</div>
+            -->
         </div>
+        <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px;">
+            <em>In‑game screenshots of Open Source World features.</em>
+        </p>
     </section>
 
     <!-- ===== WEB PAGES ===== -->
@@ -380,8 +393,8 @@
     <footer>
         <p>Made with ❤️ for the Open Source World community.</p>
         <p>
-            <a href="https://github.com/debwuoldirty/open-source-world-" target="_blank">📂 GitHub Repository</a> •
-            <a href="https://open.mp" target="_blank">⚡ Powered by open.mp</a>
+            <a href="https://github.com/opensourceworldserver/open-source-world-" target="_blank">📂 GitHub Repository</a> •
+            <span>⚡ Powered by debwuoldirty</span>
         </p>
         <p class="legal"><small>Server owner: debwuoldirty • This project is read‑only. No contributions accepted.</small></p>
     </footer>
