@@ -6,7 +6,7 @@
     <title>Open Source World – Server</title>
     <style>
         /* ============================================================
-           OPEN SOURCE WORLD – LANDING PAGE (based on help.pwn)
+           OPEN SOURCE WORLD – LANDING PAGE
            ============================================================ */
         * {
             margin: 0;
@@ -32,6 +32,7 @@
             border: 1px solid #1f1f2e;
         }
 
+        /* HEADER */
         header {
             text-align: center;
             border-bottom: 2px solid #00ff88;
@@ -63,17 +64,14 @@
             margin-top: 12px;
         }
 
-        .banner-placeholder {
-            background: #1a1a2a;
-            padding: 40px;
-            text-align: center;
-            color: #666;
-            border: 1px dashed #444;
+        .banner {
+            width: 100%;
             border-radius: 12px;
             margin-top: 20px;
-            font-size: 1.2rem;
+            border: 1px solid #2a2a3a;
         }
 
+        /* SECTIONS */
         section {
             margin: 40px 0;
         }
@@ -173,43 +171,45 @@
             margin-right: 12px;
         }
 
-        /* SCREENSHOTS GALLERY – 4 columnas responsive */
+        /* SCREENSHOTS GALLERY */
         .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
-        .screenshot-grid img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+        .screenshot-grid .card-img {
+            background: #15151f;
             border-radius: 10px;
+            overflow: hidden;
             border: 1px solid #2a2a3a;
-            background: #1a1a2a;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .screenshot-grid img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.2);
+        .screenshot-grid .card-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.15);
             border-color: #00ff88;
         }
 
-        .screenshot-placeholder {
+        .screenshot-grid .card-img img {
             width: 100%;
             height: 180px;
-            background: #1a1a2a;
-            border-radius: 10px;
-            border: 1px dashed #444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #555;
-            font-size: 0.9rem;
+            object-fit: cover;
+            display: block;
         }
 
+        .screenshot-grid .card-img .caption {
+            padding: 10px 12px;
+            color: #b0b0b8;
+            font-size: 0.9rem;
+            text-align: center;
+            background: #0d0d14;
+            border-top: 1px solid #1f1f2e;
+        }
+
+        /* FOOTER */
         footer {
             margin-top: 40px;
             padding-top: 25px;
@@ -236,13 +236,12 @@
             font-size: 0.8rem;
         }
 
+        /* RESPONSIVE */
         @media (max-width: 700px) {
             .container { padding: 20px; }
             header h1 { font-size: 2.2rem; }
             .grid-2col { grid-template-columns: 1fr; }
             .grid-3col { grid-template-columns: 1fr; }
-            .screenshot-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-            .screenshot-grid img { height: 130px; }
         }
     </style>
 </head>
@@ -255,8 +254,8 @@
         <h1>🌍 Open Source World</h1>
         <p class="subtitle">A fully‑featured multiplayer world with banks, crypto, weed, jobs, houses, vehicles & more.</p>
         <span class="status-badge">🟢 Server Online</span>
-        <!-- CAMBIA ESTO: Reemplaza el div de abajo por tu imagen real -->
-        <div class="banner-placeholder">🎮 [ Your Server Banner Image Here ]</div>
+        <!-- Banner personalizado (sube tu imagen como banner.png a la carpeta images) -->
+        <img src="images/banner.png" alt="Open Source World Banner" class="banner">
     </header>
 
     <!-- ===== FEATURES OVERVIEW ===== -->
@@ -302,27 +301,90 @@
         </div>
     </section>
 
-    <!-- ===== SCREENSHOTS GALLERY – 16 IMÁGENES ===== -->
+    <!-- ===== SCREENSHOTS GALLERY (16 IMÁGENES) ===== -->
     <section>
         <h2>📸 Screenshots</h2>
         <div class="screenshot-grid">
-            <!-- Sube tus imágenes a la carpeta "images/" con estos nombres exactos -->
-            <img src="images/weed.jpg" alt="Weed Farm">
-            <img src="images/bank.jpg" alt="Bank Interior">
-            <img src="images/skinshop.jpg" alt="Skin Shop">
-            <img src="images/vehicleshop.jpg" alt="Vehicle Shop">
-            <img src="images/modshop.jpg" alt="Mod Shop">
-            <img src="images/deathmatch.jpg" alt="Deathmatch Arena">
-            <img src="images/crypto.jpg" alt="Crypto Lab">
-            <img src="images/house.jpg" alt="House Interior">
-            <img src="images/hospital.jpg" alt="Hospital">
-            <img src="images/gas.jpg" alt="Gas Vendor">
-            <img src="images/taxi.jpg" alt="Taxi Job">
-            <img src="images/lumberjack.jpg" alt="Lumber Jack">
-            <img src="images/gps.jpg" alt="GPS Menu">
-            <img src="images/container.jpg" alt="Container Houses">
-            <img src="images/hostages.jpg" alt="Hostages / Cartel">
-            <img src="images/pcweb.jpg" alt="PC Web Pages">
+            <!-- 1. Weed -->
+            <div class="card-img">
+                <img src="images/weed.png" alt="Weed Farm">
+                <div class="caption">🌿 Weed System – Plant, grow & harvest</div>
+            </div>
+            <!-- 2. Bank -->
+            <div class="card-img">
+                <img src="images/bank.png" alt="Bank Interior">
+                <div class="caption">🏦 Bank – ATMs, transfers & history</div>
+            </div>
+            <!-- 3. Skin Shop -->
+            <div class="card-img">
+                <img src="images/skinshop.png" alt="Skin Shop">
+                <div class="caption">👕 Skin Shop – Change your look</div>
+            </div>
+            <!-- 4. Vehicle Shop -->
+            <div class="card-img">
+                <img src="images/vehicleshop.png" alt="Vehicle Shop">
+                <div class="caption">🚗 Vehicle Shop – Buy any car (2.5M)</div>
+            </div>
+            <!-- 5. Modshop -->
+            <div class="card-img">
+                <img src="images/modshop.png" alt="Vehicle Modshop">
+                <div class="caption">🔧 Modshop – Customize your ride</div>
+            </div>
+            <!-- 6. Deathmatch -->
+            <div class="card-img">
+                <img src="images/deathmatch.png" alt="Deathmatch Arena">
+                <div class="caption">⚔️ Deathmatch – PvP arena</div>
+            </div>
+            <!-- 7. Crypto Lab -->
+            <div class="card-img">
+                <img src="images/crypto.png" alt="Crypto Lab">
+                <div class="caption">₿ Crypto Lab – Mine SWC coins</div>
+            </div>
+            <!-- 8. Houses (interior) -->
+            <div class="card-img">
+                <img src="images/house.png" alt="House Interior">
+                <div class="caption">🏡 Houses – Custom interiors (400+ objects)</div>
+            </div>
+            <!-- 9. Hospital -->
+            <div class="card-img">
+                <img src="images/hospital.png" alt="Hospital">
+                <div class="caption">🏥 Hospital – Refill HP & buy Medic Kits</div>
+            </div>
+            <!-- 10. Gas Vendor -->
+            <div class="card-img">
+                <img src="images/gas.png" alt="Gas Vendor">
+                <div class="caption">⛽ Gas Vendor – Gas delivery job</div>
+            </div>
+            <!-- 11. Taxi -->
+            <div class="card-img">
+                <img src="images/taxi.png" alt="Taxi Job">
+                <div class="caption">🚕 Taxi – Passenger transport job</div>
+            </div>
+            <!-- 12. Lumber Jack -->
+            <div class="card-img">
+                <img src="images/lumberjack.png" alt="Lumber Jack">
+                <div class="caption">🪓 Lumber Jack – Wood cutting job</div>
+            </div>
+            <!-- 13. GPS / Map -->
+            <div class="card-img">
+                <img src="images/gps.png" alt="GPS / Map">
+                <div class="caption">🗺️ GPS – Navigate the world</div>
+            </div>
+            <!-- 14. Container Houses (exterior, beach) -->
+            <div class="card-img">
+                <img src="images/container.png" alt="Container Houses">
+                <div class="caption">📦 Container Houses – Beachfront living</div>
+            </div>
+            <!-- 15. Hostages -->
+            <div class="card-img">
+                <img src="images/hostages.png" alt="Hostages">
+                <div class="caption">🔒 Hostages – Buy & exchange at Cartel</div>
+            </div>
+            <!-- 16. PC Web Pages -->
+            <div class="card-img">
+                <img src="images/pcweb.png" alt="PC Web Pages">
+                <div class="caption">💻 PC Web Pages – Bank, Ammu, Weed, Crypto & more</div>
+            </div>
         </div>
         <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px;">
             <em>In‑game screenshots of Open Source World features.</em>
