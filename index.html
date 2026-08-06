@@ -193,29 +193,45 @@
             margin-right: 12px;
         }
 
-        /* SCREENSHOTS GALLERY */
+        /* NEW GALLERY STYLES */
         .screenshot-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
             margin-top: 20px;
         }
 
-        .screenshot-grid img {
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
+        .screenshot-item {
+            background: #15151f;
+            border-radius: 12px;
+            overflow: hidden;
             border: 1px solid #2a2a3a;
-            background: #1a1a2a;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 300px;
         }
 
-        .screenshot-grid img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.2);
+        .screenshot-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 255, 136, 0.15);
             border-color: #00ff88;
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 10px 15px;
+            text-align: center;
+            color: #00aaff;
+            font-weight: bold;
+            font-size: 0.95rem;
+            background: #0d0d14;
+            border-top: 1px solid #1a1a2a;
         }
 
         /* FOOTER */
@@ -240,7 +256,8 @@
             header h1 { font-size: 2.2rem; }
             .grid-2col { grid-template-columns: 1fr; }
             .grid-3col { grid-template-columns: 1fr; }
-            .screenshot-grid img { width: 100%; height: auto; }
+            .screenshot-item { width: 100%; max-width: 400px; }
+            .screenshot-item img { height: auto; }
         }
     </style>
 </head>
@@ -311,7 +328,6 @@
                 <h4>⚔️ Deathmatch Arena</h4>
                 <p>New custom deathmatch system with personal kill counter, 8 selectable weapons per match, and real-time stats. The first arena is now open at <strong>Santa Maria Beach</strong> – more arenas coming soon. Perfect for competitive PvP.</p>
             </div>
-            <!-- NUEVA TARJETA: GPS System -->
             <div class="card">
                 <h4>🗺️ GPS System</h4>
                 <p>Full in-game GPS with waypoints for every location: bank, crypto lab, weed farm, vehicle shop, modshop, hospital, gas station, taxi, lumberjack, deathmatch arenas, container spots, cartel, and more. Constantly updated whenever new features are added, keeping all players oriented.</p>
@@ -319,30 +335,38 @@
         </div>
     </section>
 
-    <!-- ===== SCREENSHOTS GALLERY ===== -->
+    <!-- ===== LATEST UPDATES SCREENSHOTS ===== -->
     <section>
-        <h2>📸 Screenshots</h2>
+        <h2>📸 Latest Updates Screenshots</h2>
         <div class="screenshot-grid">
-            <img src="images/bank.png" alt="Bank Interior">
-            <img src="images/crypto.png" alt="Crypto Lab">
-            <img src="images/weed.png" alt="Weed Farm">
-            <img src="images/skinshop.png" alt="Skin Shop">
-            <img src="images/vehicleshop.png" alt="Vehicle Shop">
-            <img src="images/modshop.png" alt="Modshop">
-            <img src="images/deathmatch.png" alt="Deathmatch">
-            <img src="images/houses.png" alt="Houses (beach)">
-            <img src="images/hospital.png" alt="Hospital">
-            <img src="images/gasvendor.png" alt="Gas Vendor">
-            <img src="images/taxi.png" alt="Taxi Job">
-            <img src="images/lumberjack.png" alt="Lumberjack">
-            <img src="images/gps.png" alt="GPS Menu">
-            <img src="images/containers.png" alt="Containers">
-            <img src="images/hostages.png" alt="Hostages">
-            <img src="images/pcweb.png" alt="PC & Web Pages">
-            <img src="images/npcs.png" alt="NPCs">
+            <!-- Cada ítem: imagen + título -->
+            <div class="screenshot-item">
+                <img src="images/source_bank_buildings.png" alt="New Source Bank Buildings">
+                <div class="image-caption">🏢 New Source Bank Buildings</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="images/ammunation_new1.png" alt="New Ammu-Nation Interior 1">
+                <div class="image-caption">🔫 New Ammu‑Nation (Interior 1)</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="images/ammunation_new2.png" alt="New Ammu-Nation Interior 2">
+                <div class="image-caption">🔫 New Ammu‑Nation (Interior 2)</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="images/back_weapon_shop.png" alt="Back Weapon Shop">
+                <div class="image-caption">🎒 Back Weapon Shop</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="images/gps_system.png" alt="New GPS System">
+                <div class="image-caption">🗺️ New GPS System</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="images/binco_new.png" alt="New Binco Shop">
+                <div class="image-caption">👕 New Binco Shop</div>
+            </div>
         </div>
         <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px;">
-            <em>In‑game screenshots of Open Source World features.</em>
+            <em>Visual highlights of the latest features added to Open Source World.</em>
         </p>
     </section>
 
@@ -391,10 +415,11 @@
         </div>
     </section>
 
-    <!-- ===== LATEST UPDATES ===== -->
+    <!-- ===== LATEST UPDATES (TEXT) ===== -->
     <section>
-        <h2>📅 Latest Updates</h2>
+        <h2>📅 Latest Updates (Changelog)</h2>
         <ul class="update-list">
+            <li><span class="date">2026-08-06</span> – New Source Bank Buildings, two new Ammu‑Nation interiors, Back Weapon Shop, GPS System, and a completely revamped Binco Shop – check the screenshots above!</li>
             <li><span class="date">2026-08-05</span> – Improved GPS system: now includes waypoints for all locations and auto‑updates when new content is added. First Deathmatch Arena added at <strong>Santa Maria Beach</strong> – personal kill counter, 8 selectable weapons per match. More arenas in development!</li>
             <li><span class="date">2026-08-04</span> – Owner successfully added persistent NPCs across the server – more coming daily!</li>
             <li><span class="date">2026-08-03</span> – Fixed hospital spawn height, added new animations (<code>/sitchair</code>, <code>/sofasit</code>, <code>/sleep</code>, etc.).</li>
