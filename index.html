@@ -223,11 +223,6 @@
             object-fit: cover;
             display: block;
             cursor: pointer;
-            transition: filter 0.2s ease;
-        }
-
-        .screenshot-item img:hover {
-            filter: brightness(1.1);
         }
 
         .image-caption {
@@ -238,22 +233,6 @@
             font-size: 0.95rem;
             background: #0d0d14;
             border-top: 1px solid #1a1a2a;
-        }
-
-        /* FOOTER */
-        footer {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid #1f1f2e;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        footer .legal {
-            margin-top: 12px;
-            color: #444;
-            font-size: 0.8rem;
         }
 
         /* ===== LIGHTBOX / MODAL DE IMÁGENES ===== */
@@ -304,13 +283,28 @@
             transform: scale(1.2);
         }
 
-        /* Animación de fade */
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Responsive */
+        /* FOOTER */
+        footer {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #1f1f2e;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer .legal {
+            margin-top: 12px;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 700px) {
             .container { padding: 20px; }
             header h1 { font-size: 2.2rem; }
@@ -406,7 +400,12 @@
     <section>
         <h2>📸 Latest Updates Screenshots</h2>
         <div class="screenshot-grid">
-            <!-- Cada ítem: imagen + título (todas con clase lightbox-trigger) -->
+            <!-- PRIMERA IMAGEN: OPSbot (AI Helper) -->
+            <div class="screenshot-item">
+                <img class="lightbox-trigger" src="images/opsbot.png" alt="AI Helper">
+                <div class="image-caption">🤖 New AI Model as Helper</div>
+            </div>
+            <!-- Resto de imágenes -->
             <div class="screenshot-item">
                 <img class="lightbox-trigger" src="images/source_bank_buildings.png" alt="New Source Bank Buildings">
                 <div class="image-caption">🏢 New Source Bank Buildings</div>
@@ -430,11 +429,6 @@
             <div class="screenshot-item">
                 <img class="lightbox-trigger" src="images/binco_new.png" alt="New Binco Shop">
                 <div class="image-caption">👕 New Binco Shop</div>
-            </div>
-            <!-- NUEVA IMAGEN: AI Helper -->
-            <div class="screenshot-item">
-                <img class="lightbox-trigger" src="images/opsbot.png" alt="AI Helper">
-                <div class="image-caption">🤖 New AI Model as Helper</div>
             </div>
         </div>
         <p style="color: #666; font-size: 0.9rem; text-align: center; margin-top: 15px;">
@@ -542,7 +536,6 @@
     // Cerrar lightbox
     function closeLightbox(event) {
         const lightbox = document.getElementById('imageLightbox');
-        // Si se hace clic en el fondo (no en la imagen) o en la X
         if (event.target === lightbox || event.target.className === 'lightbox-close') {
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
