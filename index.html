@@ -222,6 +222,12 @@
             height: 200px;
             object-fit: cover;
             display: block;
+            cursor: pointer;
+            transition: filter 0.2s ease;
+        }
+
+        .screenshot-item img:hover {
+            filter: brightness(1.1);
         }
 
         .image-caption {
@@ -250,7 +256,61 @@
             font-size: 0.8rem;
         }
 
-        /* RESPONSIVE */
+        /* ===== LIGHTBOX / MODAL DE IMÁGENES ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 40px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 12px;
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 60px rgba(0, 255, 136, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #00ff88;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10000;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .lightbox-close:hover {
+            color: #ff3333;
+            transform: scale(1.2);
+        }
+
+        /* Animación de fade */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive */
         @media (max-width: 700px) {
             .container { padding: 20px; }
             header h1 { font-size: 2.2rem; }
@@ -258,6 +318,8 @@
             .grid-3col { grid-template-columns: 1fr; }
             .screenshot-item { width: 100%; max-width: 400px; }
             .screenshot-item img { height: auto; }
+            .lightbox-content { max-width: 95%; max-height: 80%; }
+            .lightbox-close { top: 10px; right: 20px; font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -344,34 +406,34 @@
     <section>
         <h2>📸 Latest Updates Screenshots</h2>
         <div class="screenshot-grid">
-            <!-- Cada ítem: imagen + título -->
+            <!-- Cada ítem: imagen + título (todas con clase lightbox-trigger) -->
             <div class="screenshot-item">
-                <img src="images/source_bank_buildings.png" alt="New Source Bank Buildings">
+                <img class="lightbox-trigger" src="images/source_bank_buildings.png" alt="New Source Bank Buildings">
                 <div class="image-caption">🏢 New Source Bank Buildings</div>
             </div>
             <div class="screenshot-item">
-                <img src="images/ammunation_new1.png" alt="New Ammu-Nation Interior 1">
+                <img class="lightbox-trigger" src="images/ammunation_new1.png" alt="New Ammu-Nation Interior 1">
                 <div class="image-caption">🔫 New Ammu‑Nation Santa Maria Beach</div>
             </div>
             <div class="screenshot-item">
-                <img src="images/ammunation_new2.png" alt="New Ammu-Nation Interior 2">
+                <img class="lightbox-trigger" src="images/ammunation_new2.png" alt="New Ammu-Nation Interior 2">
                 <div class="image-caption">🔫 New Ammu‑Nation Jefferson</div>
             </div>
             <div class="screenshot-item">
-                <img src="images/back_weapon_shop.png" alt="Back Weapon Shop">
+                <img class="lightbox-trigger" src="images/back_weapon_shop.png" alt="Back Weapon Shop">
                 <div class="image-caption">🎒 Back Weapon Shop</div>
             </div>
             <div class="screenshot-item">
-                <img src="images/gps_system.png" alt="New GPS System">
+                <img class="lightbox-trigger" src="images/gps_system.png" alt="New GPS System">
                 <div class="image-caption">🗺️ New GPS System</div>
             </div>
             <div class="screenshot-item">
-                <img src="images/binco_new.png" alt="New Binco Shop">
+                <img class="lightbox-trigger" src="images/binco_new.png" alt="New Binco Shop">
                 <div class="image-caption">👕 New Binco Shop</div>
             </div>
             <!-- NUEVA IMAGEN: AI Helper -->
             <div class="screenshot-item">
-                <img src="images/opsbot.png" alt="AI Helper">
+                <img class="lightbox-trigger" src="images/opsbot.png" alt="AI Helper">
                 <div class="image-caption">🤖 New AI Model as Helper</div>
             </div>
         </div>
@@ -452,6 +514,52 @@
     </footer>
 
 </div>
+
+<!-- ===== LIGHTBOX / MODAL DE IMÁGENES ===== -->
+<div id="imageLightbox" class="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <img class="lightbox-content" id="lightboxImg" src="" alt="Ampliada">
+</div>
+
+<script>
+    // Abrir lightbox al hacer clic en cualquier imagen con clase "lightbox-trigger"
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.lightbox-trigger');
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        images.forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt || 'Imagen ampliada';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    });
+
+    // Cerrar lightbox
+    function closeLightbox(event) {
+        const lightbox = document.getElementById('imageLightbox');
+        // Si se hace clic en el fondo (no en la imagen) o en la X
+        if (event.target === lightbox || event.target.className === 'lightbox-close') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const lightbox = document.getElementById('imageLightbox');
+            if (lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
